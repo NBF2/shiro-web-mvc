@@ -8,7 +8,11 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -39,5 +43,15 @@ public class UserController {
     @RequiresRoles(value = {"admin"})
     public String testRole() {
         return "have role";
+    }
+
+    @RequestMapping(value = "/test123", method = RequestMethod.GET)
+    public Map<String, Object> test123(@RequestParam("username") String username, @RequestParam("password") String password) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        if (username != null && password!= null) {
+            map.put("username", username);
+            map.put("password", password);
+        }
+        return map;
     }
 }

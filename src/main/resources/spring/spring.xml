@@ -20,6 +20,7 @@
             <value>
                 /login.html = anon
                 /api/v1/login = anon
+                /api/v1/test123 = anon
                 /api/v1/* = authcFilter
             </value>
         </property>
